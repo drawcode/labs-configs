@@ -1,4 +1,4 @@
-PUBLIC files:
+# PUBLIC FILES
 
 location ~* ^/proxy_public_file/(.*) {
   set $s3_bucket        'your_bucket.s3.amazonaws.com';
@@ -15,3 +15,5 @@ location ~* ^/proxy_public_file/(.*) {
   proxy_intercept_errors on;
 
   resolver               8.8.8.8;
+  proxy_pass             http://$s3_bucket/$url_full;
+}
